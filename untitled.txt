@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Greeting</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+</head>
+<body>
+<script>
+let page = 1;
+let name = "Friend";  // Replace with your friend's name
+
+function setup() {
+    createCanvas(windowWidth, windowHeight);
+    textAlign(CENTER, CENTER);
+    textSize(32);
+    fill(0);
+    setInterval(nextPage, 2000);  // Change page every 2 seconds
+}
+
+function draw() {
+    background(255, 228, 225);
+    drawDecorations();
+
+    if (page === 1) {
+        fill("darkgreen");
+        text("Step 1: Today is 15 November", width / 2, height / 2);
+    } else if (page === 2) {
+        fill("orange");
+        text("Step 2: A very special day. 🤩", width / 2, height / 2);
+    } else if (page === 3) {
+        fill("purple");
+        text("Step 3: Today is your birthday 🎂🎉", width / 2, height / 2);
+    } else if (page === 4) {
+        fill("red");
+        text(`Step 4: Happy birthday, ${name}! ❤️`, width / 2, height / 2);
+    }
+}
+
+function nextPage() {
+    page++;
+    if (page > 4) page = 1;  // Loop back to the first page after page 4
+}
+
+function drawDecorations() {
+    strokeWeight(3);
+    stroke("purple");
+    for (let i = 0; i < width; i += 50) {
+        point(i, 50);
+        point(i, height - 50);
+    }
+    
+    stroke("blue");
+    for (let i = 0; i < height; i += 50) {
+        point(50, i);
+        point(width - 50, i);
+    }
+}
+
+function windowResized() {
+    resizeCanvas(windowWidth, windowHeight);
+}
+</script>
+</body>
+</html>
